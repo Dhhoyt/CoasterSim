@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://cq8fqdx3icg2q"]
+
+[ext_resource type="Script" path="res://Objects/Freecam.gd" id="1_mrqww"]
+[ext_resource type="PackedScene" uid="uid://dg4dslful3enx" path="res://Objects/ControlPoint.tscn" id="2_nwocv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kmu5d"]
+
+[sub_resource type="Sky" id="Sky_bgo0u"]
+sky_material = SubResource("ProceduralSkyMaterial_kmu5d")
+
+[sub_resource type="Environment" id="Environment_ub8yu"]
+background_mode = 2
+sky = SubResource("Sky_bgo0u")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_losm8"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_g3cvi"]
+
+[node name="Coaster mayb" type="Node3D"]
+
+[node name="POV" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.885394, -0.464842, 0, 0.464842, 0.885394, 0, 0, 0)
+environment = SubResource("Environment_ub8yu")
+script = ExtResource("1_mrqww")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.227913, 0)
+mesh = SubResource("PlaneMesh_losm8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8739, -0.352241, 0.335001, 0, 0.689152, 0.724617, -0.486107, -0.633242, 0.602249, 0, 1.60739, 0)
+
+[node name="Lines" type="MeshInstance3D" parent="."]
+mesh = SubResource("ImmediateMesh_g3cvi")
+skeleton = NodePath("../POV")
+
+[node name="ControlPoints" type="Node3D" parent="."]
+
+[node name="TraversalPoint" parent="." instance=ExtResource("2_nwocv")]

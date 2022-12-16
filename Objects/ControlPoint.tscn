@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg4dslful3enx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmm60"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.796078)
+
+[sub_resource type="SphereMesh" id="SphereMesh_3377u"]
+material = SubResource("StandardMaterial3D_dmm60")
+
+[node name="ControlPoint" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_3377u")
